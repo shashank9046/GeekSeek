@@ -3,7 +3,7 @@ const router = express.Router();
 const auth =require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
-const {check,validationResult} = require('express-validator');
+const {check,validationResult} = require('express-validator/check');
 
 // @route GET api/profile/me
 // @desc Get current users Profile
@@ -89,6 +89,21 @@ router.post('/',[auth,[
         res.status(500).send('Server Error');
     }
     
+});
+
+
+
+// @route   GET api/profile
+// @desc    Get all profiles
+// @access  Public
+router.get('/', async (req,res)=>{
+    try {
+        const profiles =await Profile.find().populate('user',['name','avatar'],User); //path,select,model
+        res.json(profiles);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
 });
 
 
