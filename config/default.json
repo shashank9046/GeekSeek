@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://rohan123:rohan123@geekseek.rpams.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret" : "itsasecret"
+    "jwtSecret" : "itsasecret",
+    "githubClientId":"3b1260b6bbb4137ed3b5",
+    "githubSecret":"e607d5a54badd6d7ac22253a1a0fda53b9f70a44"
 }
