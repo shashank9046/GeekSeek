@@ -1,5 +1,5 @@
-const moongose = require('mongoose');
-const Schema = moongose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const PostSchema = new Schema({
     user:{
         type: Schema.Types.ObjectId,
@@ -51,4 +51,4 @@ const PostSchema = new Schema({
             }
 });
 
-module.exports = Post = mongoose.model('post',Post);
+module.exports = Post = mongoose.model('post',PostSchema);
