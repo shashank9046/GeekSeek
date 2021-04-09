@@ -184,7 +184,7 @@ router.delete('/comment/:id/:comment_id',auth,async(req,res)=>{
         const post = await Post.findById(req.params.id);
 
         //pulling out the specific comment
-        const comment = post.comment.find(comment => comment.id === req.params.comment_id);
+        const comment = post.comments.find(comment => comment.id === req.params.comment_id);
 
         //if no comment
         if(!comment){
@@ -197,6 +197,11 @@ router.delete('/comment/:id/:comment_id',auth,async(req,res)=>{
         }
 
         //getting removeindex
+        
+        const removeIndex = post.comments.map(comment=>comment.user.toString()).indexOf(req.user.id);
+        post.comments.splice(removeIndex,1);
+        await post.save();
+        res.json(post.comments);
 
         
     } catch (err) {
