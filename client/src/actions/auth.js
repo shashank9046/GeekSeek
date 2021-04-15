@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {setAlert} from './alert';
 import {REGISTER_SUCCESS,REGISTER_FAIL,USER_LOADED,
-    AUTH_ERROR,LOGIN_FAIL,LOGIN_SUCCESS} from './types';
+    AUTH_ERROR,LOGIN_FAIL,LOGIN_SUCCESS,LOGOUT} from './types';
 import setAuthToken from '../utils/seAuthToken';
 //Load User
 export const loadUser =() => async dispatch =>{
@@ -83,3 +83,8 @@ export const register =({name,email,password}) => async dispatch => {
         });
     }
 };
+
+//Logout / clear profile
+export const logout=() => dispatch =>{
+    dispatch({type:LOGOUT});
+}
