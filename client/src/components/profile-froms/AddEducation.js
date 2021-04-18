@@ -1,11 +1,10 @@
-import React, { Fragment, useState } from 'react'
-import { Link, withRouter } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { addEducation } from '../../actions/profile'
+import React, { Fragment, useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addEducation } from '../../actions/profile';
 
-const AddExperience = ({ addEducation, history }) => {
-
+const AddEducation = ({ addEducation, history }) => {
     const [formData, setFormData] = useState({
         college: '',
         branch: '',
@@ -15,9 +14,13 @@ const AddExperience = ({ addEducation, history }) => {
         current: false,
         description: ''
     });
+
     const [toDateDisabled, toggleDisabled] = useState(false);
+
     const { college, branch, course, from, to, current, description } = formData
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const onChange = e =>
+        setFormData({ ...formData, [e.target.name]: e.target.value });
 
     return (
         <Fragment>
@@ -68,14 +71,17 @@ const AddExperience = ({ addEducation, history }) => {
                     ></textarea>
                 </div>
                 <input type="submit" class="btn btn-primary my-1" />
-                <a class="btn btn-light my-1" href="dashboard.html">Go Back</a>
+                <Link class="btn btn-light my-1" to="/dashboard">Go Back</Link>
             </form>
         </Fragment>
-    )
-}
+    );
+};
 
-AddExperience.propTypes = {
-    addEducation: PropTypes.func.isRequired,
-}
+AddEducation.propTypes = {
+    addEducation: PropTypes.func.isRequired
+};
 
-export default connect(null, { addEducation })(AddExperience)
+export default connect(
+    null,
+    { addEducation }
+)(withRouter(AddEducation));
