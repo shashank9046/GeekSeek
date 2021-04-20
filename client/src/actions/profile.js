@@ -138,8 +138,8 @@ export const addExperience = (formData, history) => async dispatch => {
         });
 
         dispatch(setAlert('Experience Added', 'success'));
-
-        history.push('/dashboard');
+        window.location.reload(true)
+        // history.push('/dashboard');
     } catch (err) {
         const errors = err.response.data.errors;
 
@@ -172,8 +172,8 @@ export const addEducation = (formData, history) => async dispatch => {
 
         dispatch(setAlert('Education Added', 'success'));
 
-        // window.location.reload(true)
-        history.push('/dashboard')
+        window.location.reload(true)
+        //history.push('/dashboard')
     } catch (err) {
 
         const errors = err.res.data.errors;
